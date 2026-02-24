@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 18% 13%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 35 90% 55%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 35 90% 55%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 35 90% 55%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 35 90% 55%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 15% 18%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 15% 22%;
+    --sidebar-ring: 35 90% 55%;
+
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 py-16 md:px-8 lg:px-16 lg:py-24;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    @apply text-3xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase;
+  }
+
+  .section-subtitle {
+    @apply text-muted-foreground text-sm md:text-base tracking-widest uppercase mt-2;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(200,140,40,0.15)];
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 md:px-8 md:py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:brightness-110 hover:scale-105;
+    font-family: var(--font-heading);
+  }
+
+  .btn-outline {
+    @apply border border-foreground/30 text-foreground px-6 py-3 md:px-8 md:py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-foreground/10 hover:border-primary hover:text-primary;
+    font-family: var(--font-heading);
+  }
+
+  .numbered-label {
+    font-family: var(--font-heading);
+    @apply text-primary text-4xl md:text-5xl font-bold;
+  }
+
+  .logo-loop-row {
+    @apply flex items-center gap-10 w-max;
+    animation: logo-loop 26s linear infinite;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes logo-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
