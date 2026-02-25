@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide default cursor on devices with fine pointer (desktop) */
+@media (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
 
 @layer base {
   :root {
@@ -45,8 +50,8 @@
     --sidebar-border: 220 15% 22%;
     --sidebar-ring: 35 90% 55%;
 
-    --font-heading: 'Oswald', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Teko', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
   }
 }
 
@@ -58,46 +63,143 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
 }
 
 @layer components {
+  /* ---- Section layout ---- */
   .section-padding {
-    @apply px-4 py-16 md:px-8 lg:px-16 lg:py-24;
+    @apply px-4 py-14 md:px-8 md:py-20 lg:px-16 lg:py-24;
   }
 
   .section-title {
     font-family: var(--font-heading);
-    @apply text-3xl md:text-5xl lg:text-6xl font-bold tracking-wider uppercase;
+    @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold tracking-wide uppercase leading-none;
+  }
+
+  /* gradient highlight on section titles */
+  .section-title-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--foreground)) 40%, hsl(var(--primary)) 100%);
   }
 
   .section-subtitle {
-    @apply text-muted-foreground text-sm md:text-base tracking-widest uppercase mt-2;
-  }
-
-  .card-hover {
-    @apply transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(200,140,40,0.15)];
-  }
-
-  .btn-primary {
-    @apply bg-primary text-primary-foreground px-6 py-3 md:px-8 md:py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:brightness-110 hover:scale-105;
     font-family: var(--font-heading);
+    @apply text-sm sm:text-base md:text-lg tracking-[0.3em] uppercase mt-1;
+  }
+
+  /* ---- Cards ---- */
+  .card-hover {
+    @apply transition-all duration-500;
+  }
+
+  @media (hover: hover) {
+    .card-hover:hover {
+      @apply scale-[1.02] shadow-[0_0_50px_rgba(200,140,40,0.12)];
+    }
+  }
+
+  .card-industrial {
+    @apply bg-card border border-border/60 relative overflow-hidden;
+    /* top-left corner accent */
+  }
+
+  .card-industrial::before {
+    content: "";
+    @apply absolute top-0 left-0 w-12 h-[2px] bg-primary;
+  }
+
+  .card-industrial::after {
+    content: "";
+    @apply absolute top-0 left-0 w-[2px] h-12 bg-primary;
+  }
+
+  /* ---- Buttons ---- */
+  .btn-primary {
+    @apply relative bg-primary text-primary-foreground px-5 py-2.5 md:px-8 md:py-3.5 font-semibold uppercase tracking-[0.15em] text-xs sm:text-sm transition-all duration-300 overflow-hidden;
+    font-family: var(--font-heading);
+    letter-spacing: 0.18em;
+  }
+
+  .btn-primary::before {
+    content: "";
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+  }
+
+  @media (hover: hover) {
+    .btn-primary:hover {
+      @apply scale-105 brightness-110;
+    }
+    .btn-primary:hover::before {
+      @apply opacity-100;
+    }
   }
 
   .btn-outline {
-    @apply border border-foreground/30 text-foreground px-6 py-3 md:px-8 md:py-4 font-semibold uppercase tracking-wider text-sm transition-all duration-300 hover:bg-foreground/10 hover:border-primary hover:text-primary;
+    @apply relative border-2 border-foreground/20 text-foreground px-5 py-2.5 md:px-8 md:py-3.5 font-semibold uppercase tracking-[0.15em] text-xs sm:text-sm transition-all duration-300;
     font-family: var(--font-heading);
+    letter-spacing: 0.18em;
+  }
+
+  @media (hover: hover) {
+    .btn-outline:hover {
+      @apply border-primary text-primary bg-primary/5;
+    }
   }
 
   .numbered-label {
     font-family: var(--font-heading);
-    @apply text-primary text-4xl md:text-5xl font-bold;
+    @apply text-primary text-4xl sm:text-5xl md:text-6xl font-bold leading-none;
+  }
+
+  /* ---- Hazard stripe decorative element ---- */
+  .hazard-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      hsl(var(--primary)) 0px,
+      hsl(var(--primary)) 8px,
+      transparent 8px,
+      transparent 16px
+    );
+    @apply h-1.5 w-full opacity-80;
+  }
+
+  .hazard-stripe-thin {
+    background: repeating-linear-gradient(
+      -45deg,
+      hsl(var(--primary) / 0.4) 0px,
+      hsl(var(--primary) / 0.4) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    @apply h-px w-full;
+  }
+
+  /* ---- Angled section divider ---- */
+  .section-divider-top {
+    @apply relative;
+  }
+
+  .section-divider-top::before {
+    content: "";
+    @apply absolute top-0 left-0 right-0 h-16 md:h-24 -translate-y-full;
+    background: inherit;
+    clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+  }
+
+  /* ---- Glow line accent ---- */
+  .glow-line {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6) 20%, hsl(var(--primary)) 50%, hsl(var(--primary) / 0.6) 80%, transparent);
   }
 
   .logo-loop-row {
@@ -108,6 +210,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Prevent layout shifts from scrollbar on desktop */
+@supports (scrollbar-gutter: stable) {
+  html {
+    scrollbar-gutter: stable;
+  }
 }
 
 @keyframes logo-loop {

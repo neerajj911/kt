@@ -22,7 +22,7 @@ export const TrueFocus = ({ words, cycleDelay = 2400, className = "" }: TrueFocu
 
   return (
     <div className={`inline-flex items-center justify-start ${className}`}>
-      <div className="relative px-4 py-2 md:px-6 md:py-3 border border-primary/60 bg-background/60 backdrop-blur-sm">
+      <div className="relative px-3 py-2 sm:px-4 md:px-6 md:py-3 border border-primary/60 bg-background/60 backdrop-blur-sm">
         {/* focus brackets */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1 top-1 h-3 w-3 border-l border-t border-primary/80" />
@@ -46,7 +46,7 @@ export const TrueFocus = ({ words, cycleDelay = 2400, className = "" }: TrueFocu
                   y: isActive ? 0 : 1,
                 }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                className="font-heading uppercase tracking-[0.2em] text-3xl md:text-5xl lg:text-7xl whitespace-nowrap"
+                className="font-heading uppercase tracking-[0.1em] sm:tracking-[0.14em] md:tracking-[0.18em] text-3xl sm:text-4xl md:text-6xl lg:text-8xl whitespace-nowrap"
               >
                 {word}
               </motion.span>

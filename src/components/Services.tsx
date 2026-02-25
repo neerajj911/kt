@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, scaleIn, staggerContainer, useScrollReveal } from "@/lib/animations";
 import { TiltedCard } from "./reactbits/TiltedCard";
+import { TextScramble } from "./reactbits/TextScramble";
 import serviceDebris from "@/assets/service-debris.jpg";
 import serviceDemolition from "@/assets/service-demolition.jpg";
 import serviceScrap from "@/assets/service-scrap.jpg";
@@ -49,9 +50,9 @@ const Services = () => {
         className="max-w-7xl mx-auto"
       >
         <motion.p variants={fadeUp} className="section-subtitle text-primary">What We Do</motion.p>
-        <motion.h2 variants={fadeUp} className="section-title mb-12">Our Services</motion.h2>
+        <motion.h2 variants={fadeUp} className="section-title section-title-gradient mb-10 md:mb-12"><TextScramble text="Our Services" /></motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {services.map((s) => (
             <motion.div
               key={s.num}
@@ -59,10 +60,11 @@ const Services = () => {
               whileHover={{ y: -4, transition: { duration: 0.25 } }}
             >
               <TiltedCard className="card-hover">
-                <div className="aspect-square overflow-hidden relative">
+                <div className="aspect-[4/3] sm:aspect-square overflow-hidden relative">
                   <img
                     src={s.img}
                     alt={s.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -74,7 +76,7 @@ const Services = () => {
                   <ul className="space-y-1.5">
                     {s.features.map((f) => (
                       <li key={f} className="text-muted-foreground text-xs flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block shrink-0" />
+                        <span className="w-1 h-1 bg-primary inline-block shrink-0 rotate-45" />
                         {f}
                       </li>
                     ))}

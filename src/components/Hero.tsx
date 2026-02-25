@@ -18,7 +18,7 @@ const Hero = () => {
     <section
       id="home"
       ref={sectionRef}
-      className="relative min-h-screen flex items-end pb-16 md:pb-24 overflow-hidden"
+      className="relative min-h-screen flex items-end pb-20 md:pb-28 overflow-hidden"
     >
       {/* Parallax Background */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
@@ -26,11 +26,15 @@ const Hero = () => {
           src={heroBg}
           alt="Demolition site with heavy machinery"
           className="w-full h-full object-cover scale-110"
+          loading="eager"
+          fetchPriority="high"
         />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/75 to-background/20" />
+      {/* Dark edge vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.4)_100%)]" />
       {/* Subtle grain overlay */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3QgZmlsdGVyPSJ1cmwoI2EpIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+PC9zdmc=')]" />
+      <div className="absolute inset-0 opacity-[0.04] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3QgZmlsdGVyPSJ1cmwoI2EpIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+PC9zdmc=')]" />
 
       <motion.div
         variants={staggerContainer}
@@ -39,8 +43,8 @@ const Hero = () => {
         style={{ opacity: textOpacity }}
         className="relative z-10 max-w-7xl mx-auto w-full px-4 md:px-8"
       >
-        <motion.div variants={clipReveal} className="mb-4">
-          <p className="section-subtitle text-primary text-xs sm:text-sm md:text-base flex flex-wrap items-center gap-x-3 gap-y-1">
+        <motion.div variants={clipReveal} className="mb-3 md:mb-4">
+          <p className="section-subtitle text-primary text-xs sm:text-sm md:text-base flex flex-wrap items-center gap-x-2 sm:gap-x-3 gap-y-1">
             <span className="whitespace-nowrap">Demolition</span>
             <span className="opacity-60 hidden sm:inline">•</span>
             <span className="whitespace-nowrap">Debris Removal</span>
@@ -51,7 +55,7 @@ const Hero = () => {
           </p>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mb-4">
+        <motion.div variants={fadeUp} className="mb-3 md:mb-4">
           <TrueFocus
             words={["DEMOLISH", "REBUILD"]}
             className="drop-shadow-[0_0_40px_rgba(0,0,0,0.6)]"
@@ -60,7 +64,7 @@ const Hero = () => {
 
         <motion.p
           variants={fadeUp}
-          className="text-foreground/80 text-base md:text-lg max-w-xl mb-8 font-body leading-relaxed"
+          className="text-foreground/80 text-sm sm:text-base md:text-lg max-w-xl mb-6 md:mb-8 font-body leading-relaxed"
         >
           A new standard of industrial demolition and recycling. Powering clean,
           safe, and efficient site clearance across the nation.

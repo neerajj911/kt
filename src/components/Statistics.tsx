@@ -13,8 +13,8 @@ const Statistics = () => {
 
   return (
     <section className="section-padding bg-card border-y border-border relative overflow-hidden" ref={ref}>
-      {/* Decorative accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      {/* Decorative glow line */}
+      <div className="absolute top-0 left-0 right-0 glow-line" />
 
       <motion.div
         variants={staggerContainer}
@@ -22,7 +22,7 @@ const Statistics = () => {
         animate={isInView ? "visible" : "hidden"}
         className="max-w-7xl mx-auto"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-12 text-center">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -42,7 +42,7 @@ const Statistics = () => {
         </div>
       </motion.div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 glow-line" />
     </section>
   );
 };

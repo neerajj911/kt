@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, useScrollReveal } from "@/lib/animations";
-import { TiltedCard } from "./reactbits/TiltedCard";
 import { LogoLoopRB } from "./reactbits/LogoLoopRB";
+import { TextScramble } from "./reactbits/TextScramble";
 
 const partners = [
   { name: "Urban Build Group", sector: "Commercial Construction", initials: "UB" },
@@ -28,13 +28,13 @@ const Clients = () => {
         <motion.p variants={fadeUp} className="section-subtitle text-primary">
           Trusted Partners
         </motion.p>
-        <motion.h2 variants={fadeUp} className="section-title mb-6">
-          Clients &amp; Partners
+        <motion.h2 variants={fadeUp} className="section-title section-title-gradient mb-6">
+          <TextScramble text="Clients & Partners" />
         </motion.h2>
 
         <motion.p
           variants={fadeUp}
-          className="text-muted-foreground max-w-2xl text-sm md:text-base leading-relaxed mb-10"
+          className="text-muted-foreground max-w-2xl text-sm md:text-base leading-relaxed mb-8 md:mb-10"
         >
           We partner with leading contractors, municipalities, and industrial operators to deliver
           safe, efficient demolition and material recovery on complex, time-sensitive sites.
@@ -44,11 +44,11 @@ const Clients = () => {
           <LogoLoopRB
             logos={partners.map((p) => ({
               node: (
-                <div className="flex items-center gap-3 px-5 py-2 rounded-full border border-border/70 bg-background/40 backdrop-blur-sm">
-                  <span className="h-8 w-8 rounded-md bg-primary/10 border border-primary/40 flex items-center justify-center font-heading text-xs tracking-[0.2em] text-primary">
+                <div className="flex items-center gap-3 px-5 py-2.5 border border-border/50 bg-card/60 backdrop-blur-sm">
+                  <span className="h-8 w-8 flex items-center justify-center font-heading text-sm tracking-[0.15em] text-primary border border-primary/30 bg-primary/5">
                     {p.initials}
                   </span>
-                  <span className="font-heading text-[11px] tracking-[0.25em] uppercase text-muted-foreground whitespace-nowrap">
+                  <span className="font-heading text-xs tracking-[0.2em] uppercase text-muted-foreground whitespace-nowrap">
                     {p.name}
                   </span>
                 </div>

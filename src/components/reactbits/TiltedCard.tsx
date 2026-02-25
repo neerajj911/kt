@@ -31,10 +31,10 @@ export const TiltedCard = ({ className = "", children, ...rest }: TiltedCardProp
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`group relative bg-card border border-border/80 overflow-hidden transition-transform duration-200 ease-out will-change-transform hover:shadow-[0_0_40px_rgba(250,204,21,0.10)] ${className}`}
+      className={`group relative bg-card border border-border/60 overflow-hidden transition-transform duration-200 ease-out will-change-transform hover:border-primary/30 hover:shadow-[0_4px_60px_rgba(200,140,40,0.12)] ${className}`}
       {...rest}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,_rgba(250,204,21,0.18),_transparent_60%)] transition-opacity duration-300" />
+      <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,_hsl(var(--primary)_/_0.12),_transparent_60%)] transition-opacity duration-500" />
       {children}
     </div>
   );

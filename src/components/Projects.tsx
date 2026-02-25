@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, scaleIn, staggerContainer, useScrollReveal } from "@/lib/animations";
 import { TiltedCard } from "./reactbits/TiltedCard";
+import { TextScramble } from "./reactbits/TextScramble";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -38,9 +39,9 @@ const Projects = () => {
         className="max-w-7xl mx-auto"
       >
         <motion.p variants={fadeUp} className="section-subtitle text-primary">Portfolio</motion.p>
-        <motion.h2 variants={fadeUp} className="section-title mb-12">Completed Projects</motion.h2>
+        <motion.h2 variants={fadeUp} className="section-title section-title-gradient mb-10 md:mb-12"><TextScramble text="Completed Projects" /></motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
           {projects.map((p) => (
             <motion.div key={p.name} variants={scaleIn}>
               <TiltedCard className="card-hover">
@@ -48,6 +49,7 @@ const Projects = () => {
                   <img
                     src={p.img}
                     alt={p.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
