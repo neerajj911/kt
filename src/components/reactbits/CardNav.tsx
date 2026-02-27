@@ -82,7 +82,7 @@ export const CardNav = ({ brand, brandAccent, links, ctaLabel, ctaHref }: CardNa
   return (
     <nav
       ref={navRef}
-      style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999 }}
+      style={{ position: "fixed", top: 0, left: 0, width: "100%", zIndex: 9999 }}
       className={`border-b transition-colors duration-300 ${
         scrolled
           ? "border-border/70 bg-background shadow-lg shadow-black/20 md:bg-background/90 md:backdrop-blur-xl"

@@ -211,13 +211,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
 }
 
-/* Prevent layout shifts from scrollbar on desktop */
-@supports (scrollbar-gutter: stable) {
-  html {
-    scrollbar-gutter: stable;
-  }
+body {
+  overflow-x: hidden;
 }
 
 @keyframes logo-loop {
